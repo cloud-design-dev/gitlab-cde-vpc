@@ -7,6 +7,7 @@ module environment {
   resource_group               = data.ibm_resource_group.group.id
   certificate_manager_instance = var.certificate_manager_instance
   cis_instance                 = var.cis_instance
+  regional_ssh_key             = var.regional_ssh_key
 }
 
 module vpc {
