@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"gitlab","Source":"./instance","Dir":"instance"},{"Key":"security","Source":"./security","Dir":"security"},{"Key":"vpc","Source":"./vpc","Dir":"vpc"},{"Key":"dns","Source":"./dns","Dir":"dns"},{"Key":"","Source":"","Dir":"."}]}

@@ -1,0 +1,15 @@
+---
+  - hosts: instances
+    vars:
+      gitlab_external_url: "https://gitlab.cde-lab.cloud/"
+      gitlab_redirect_http_to_https: "true"
+      gitlab_ssl_certificate: "/etc/letsencrypt/live/gitlab.cde-lab.cloud/cert.pem"
+      gitlab_ssl_certificate_key: "/etc/letsencrypt/live/gitlab.cde-lab.cloud/privkey.pem"
+      certbot_admin_email: ryantiffany@fastmail.com
+      certbot_create_if_missing: true
+      certbot_create_standalone_stop_services: []
+      certbot_certs:
+        - domains: ["gitlab.cde-lab.cloud"]
+    roles:
+      - role: geerlingguy.certbot
+      - role: geerlingguy.gitlab
