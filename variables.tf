@@ -14,7 +14,6 @@ variable resource_group {
 variable project_name {
   description = "Label that will be used to identify resources in this deployment. Will also be assigned as a tag to any resource that supports it."
 }
-
-variable regional_ssh_key {
-  default = "hyperion-us-east"
-}
+variable regional_ssh_key {}
+variable certificate_manager_instance {}
+variable cis_instance {}

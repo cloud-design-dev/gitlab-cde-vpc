@@ -2,6 +2,13 @@ locals {
   name = formatdate("DDhhmm", timestamp())
 }
 
+module environment {
+  source                       = "./environment"
+  resource_group               = data.ibm_resource_group.group.id
+  certificate_manager_instance = var.certificate_manager_instance
+  cis_instance                 = var.cis_instance
+}
+
 module vpc {
   source         = "./vpc"
   project_name   = var.project_name
@@ -25,7 +32,7 @@ module gitlab {
   subnet_id         = module.vpc.service_subnet.id
   security_group_id = module.vpc.vpc.default_security_group
   zone              = module.vpc.zone
-  ssh_keys          = [module.vpc.generated_key_id, data.ibm_is_ssh_key.ssh_key.id]
+  ssh_keys          = [module.vpc.generated_key_id, module.environment.regional_ssh_key_id]
   tags              = concat(var.tags, ["region:${var.region}", "project_version:${local.name}", "terraform_workspace:${terraform.workspace}"])
 }
 
