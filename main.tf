@@ -25,7 +25,7 @@ module gitlab {
   subnet_id         = module.vpc.service_subnet.id
   security_group_id = module.vpc.vpc.default_security_group
   zone              = module.vpc.zone
-  ssh_keys          = [module.vpc.generated_key_id]
+  ssh_keys          = [module.vpc.generated_key_id, data.ibm_is_ssh_key.ssh_key.id]
   tags              = concat(var.tags, ["region:${var.region}", "project_version:${local.name}", "terraform_workspace:${terraform.workspace}"])
 }
 
