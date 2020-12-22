@@ -37,10 +37,12 @@ module gitlab {
 }
 
 module dns {
-  depends_on     = [module.gitlab]
-  source         = "./dns"
-  gitlab_ip      = module.gitlab.gitlab_ip
-  resource_group = data.ibm_resource_group.group.id
+  depends_on                   = [module.gitlab]
+  source                       = "./dns"
+  gitlab_ip                    = module.gitlab.gitlab_ip
+  resource_group               = data.ibm_resource_group.group.id
+  cis_instance                 = module.environment.cis_instance
+  certificate_manager_instance = module.environment.certificate_manager_instance
 }
 
 # module ansible {
